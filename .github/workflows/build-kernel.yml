@@ -210,6 +210,7 @@ jobs:
     - name: Setup Configuration for Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        cp arch/${{ env.ARCH }}/configs/vendor/xiaomi/alioth.config arch/${{ env.ARCH }}/configs/vendor/alioth.config
         if [ ${{ env.APPLY_KSU_PATCH }} = true ]; then
             bash $GITHUB_WORKSPACE/patches/patches.sh
             if grep -q "CONFIG_KSU" arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}; then
